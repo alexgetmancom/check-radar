@@ -1,0 +1,11 @@
+data/
+credentials.json
+.git/
+__pycache__/
+*.db
+*.log
+*.md
+Dockerfile
+docker-compose.yml
+.agents/
+.gemini/

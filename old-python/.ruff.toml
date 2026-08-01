@@ -1,0 +1,21 @@
+# Настройки линтера и форматировщика Ruff
+target-version = "py311"
+line-length = 120
+
+[lint]
+select = [
+    "E",    # pycodestyle errors
+    "W",    # pycodestyle warnings
+    "F",    # pyflakes
+    "I",    # isort (авто-сортировка импортов)
+    "B",    # flake8-bugbear (поиск багов)
+]
+ignore = [
+    "E501", # игнорировать слишком длинные строки
+    "E402", # разрешить импорты после sys.path.append / setup_logging
+]
+
+[format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
