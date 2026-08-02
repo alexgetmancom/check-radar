@@ -1,6 +1,7 @@
 services:
   app:
     build: .
+    image: check-radar:latest
     restart: unless-stopped
     env_file:
       - .env

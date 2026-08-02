@@ -3,7 +3,7 @@
   "configVersion": 1,
   "workspaces": {
     "": {
-      "name": "me-checks-typescript",
+      "name": "check-radar",
       "dependencies": {
         "dotenv": "^16.6.1",
         "drizzle-orm": "^0.45.2",

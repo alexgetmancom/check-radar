@@ -1,6 +1,6 @@
-# MeChecks TypeScript
+# CheckRadar
 
-MeChecks is a personal Telegram finance assistant. It imports receipts from the Russian Federal Tax Service and selected Gmail messages, stores a compatible SQLite data model, and exposes the bot's reports and commands.
+CheckRadar is a personal Telegram finance assistant. It imports receipts from the Russian Federal Tax Service and selected Gmail messages, stores a compatible SQLite data model, and exposes the bot's reports and commands.
 
 The TypeScript application is built on the shared `typescript-boilerplate` foundation and runs on Bun.
 
@@ -71,7 +71,7 @@ Create a `.env` file with the required credentials, then run:
 docker compose up -d --build
 ```
 
-The container runs as the non-root `bun` user and persists SQLite data in `./data`. Take a database backup before production deployments and keep the image versioned so a rollback remains possible.
+The container runs as the non-root `bun` user and persists SQLite data in `./data`. Compose tags the image as `check-radar:latest`; take a database backup before production deployments and keep the image versioned so a rollback remains possible.
 
 ## Repository layout
 

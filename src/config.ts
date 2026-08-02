@@ -27,7 +27,7 @@ const optionalText = z.preprocess(
 
 const envSchema = z.object({
   NODE_ENV: z.enum(["development", "test", "production"]).default("development"),
-  APP_NAME: z.string().min(1).default("me-checks"),
+  APP_NAME: z.string().min(1).default("check-radar"),
   BOT_MODE: z.enum(["polling", "webhook", "http-only"]).default("polling"),
   TELEGRAM_BOT_TOKEN: optionalText,
   TELEGRAM_API_ROOT: z.string().url().default("https://api.telegram.org"),
