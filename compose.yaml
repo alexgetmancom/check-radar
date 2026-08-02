@@ -1,0 +1,28 @@
+services:
+  app:
+    build: .
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      BIND_HOST: 0.0.0.0
+      DATABASE_URL: /app/data/receipts.db
+      NODE_ENV: production
+      PORT: 8080
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./data:/app/data
+      - ./credentials.json:/app/credentials.json
+      - ./gmail_token.json:/app/gmail_token.json
+      - ./client_secret.json:/app/client_secret.json
+    healthcheck:
+      test:
+        - CMD
+        - bun
+        - -e
+        - 'fetch("http://127.0.0.1:8080/healthz").then((response) => process.exit(response.ok ? 0 : 1)).catch(() => process.exit(1))'
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s

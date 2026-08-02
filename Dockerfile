@@ -1,0 +1,34 @@
+FROM oven/bun:1.3.14 AS build
+
+WORKDIR /app
+
+COPY package.json bun.lock ./
+RUN bun install --frozen-lockfile
+
+COPY tsconfig.json biome.json drizzle.config.ts ./
+COPY src ./src
+COPY drizzle ./drizzle
+
+RUN bun run build
+
+FROM oven/bun:1.3.14
+
+WORKDIR /app
+
+COPY package.json bun.lock ./
+RUN bun install --frozen-lockfile --production
+
+COPY --from=build /app/dist ./dist
+COPY drizzle ./drizzle
+
+RUN mkdir -p /app/data && chown -R bun:bun /app
+USER bun
+
+ENV NODE_ENV=production
+ENV BOT_MODE=polling
+ENV BIND_HOST=0.0.0.0
+ENV PORT=8080
+
+EXPOSE 8080
+
+CMD ["bun", "dist/src/index.js"]

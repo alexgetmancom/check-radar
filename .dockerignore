@@ -6,4 +6,4 @@ credentials.json
 gmail_token.json
 client_secret.json
 *.log
-.DS_Store
+tests/
